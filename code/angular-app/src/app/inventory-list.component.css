@@ -1,0 +1,4 @@
+.inventory-table { width: 100%; border-collapse: collapse; }
+.inventory-table th, .inventory-table td { border: 1px solid #ccc; padding: 8px; }
+.below-msl { background: #ffe0e0; color: #b00; font-weight: bold; }
+.error { color: red; margin: 1em 0; }

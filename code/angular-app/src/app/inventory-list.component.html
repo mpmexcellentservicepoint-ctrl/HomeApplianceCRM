@@ -1,0 +1,32 @@
+<h2>Inventory</h2>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<button routerLink="/inventory/add">Add Part</button>
+<table *ngIf="!loading && parts.length" class="inventory-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Stock Qty</th>
+      <th>MSL</th>
+      <th>Storage Location</th>
+      <th>Box No</th>
+      <th>Alternate Location</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let part of parts" [class.below-msl]="isBelowMSL(part)">
+      <td>{{ part.name }}</td>
+      <td>{{ part.description }}</td>
+      <td>{{ part.stockQty }}</td>
+      <td>{{ part.msl }}</td>
+      <td>{{ part.storageLocation }}</td>
+      <td>{{ part.boxNo }}</td>
+      <td>{{ part.alternateLocation }}</td>
+      <td>
+        <button [routerLink]="['/inventory/edit', part.id]">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

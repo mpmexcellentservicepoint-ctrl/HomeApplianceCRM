@@ -1,0 +1,22 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_app.Pages.TechnicianJobPartsPage">
+    <StackLayout>
+        <Label Text="Job Parts" FontSize="24" HorizontalOptions="Center" />
+        <ListView ItemsSource="{Binding JobParts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding PartName}" WidthRequest="120" />
+                            <Label Text="Qty: {Binding Quantity}" WidthRequest="60" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Request Part" Clicked="RequestPart_Clicked" />
+        <Button Text="Mark Used" Clicked="MarkUsed_Clicked" />
+        <Button Text="Return Unused" Clicked="ReturnPart_Clicked" />
+    </StackLayout>
+</ContentPage>

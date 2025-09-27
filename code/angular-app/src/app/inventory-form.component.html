@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <label>Name: <input formControlName="name"></label><br>
+  <label>Description: <input formControlName="description"></label><br>
+  <label>Stock Qty: <input type="number" formControlName="stockQty"></label><br>
+  <label>MSL: <input type="number" formControlName="msl"></label><br>
+  <label>Storage Location: <input formControlName="storageLocation"></label><br>
+  <label>Box No: <input formControlName="boxNo"></label><br>
+  <label>Alternate Location: <input formControlName="alternateLocation"></label><br>
+  <button type="submit" [disabled]="form.invalid || loading">Save</button>
+  <button type="button" (click)="cancel()">Cancel</button>
+</form>

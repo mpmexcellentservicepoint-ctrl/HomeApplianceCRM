@@ -1,0 +1,14 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_app.Pages.TechnicianJobDetailPage">
+    <StackLayout>
+        <Label Text="Job Detail" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Product: {Binding Product.Name}" />
+        <Label Text="Status: {Binding Status}" />
+        <Label Text="SLA: {Binding SLAStatus}" />
+        <Label Text="SLA Deadline: {Binding SLADeadline}" />
+        <Label Text="Customer: {Binding Customer.Name}" />
+        <Label Text="Dealer: {Binding Dealer.Name}" />
+        <Button Text="Manage Parts" Clicked="OnManagePartsClicked" />
+    </StackLayout>
+</ContentPage>

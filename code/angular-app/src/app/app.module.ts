@@ -6,22 +6,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { JobsModule } from './jobs/jobs.module';
 import { JobListComponent } from './jobs/job-list.component';
 import { JobDetailComponent } from './jobs/job-detail.component';
+import { InventoryListComponent } from './inventory-list.component';
+import { InventoryFormComponent } from './inventory-form.component';
+import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PartRequestsComponent } from './part-requests.component';
+import { InvoiceComponent } from './invoice.component';
 
 const routes: Routes = [
   { path: 'jobs', component: JobListComponent },
-  { path: 'jobs/:id', component: JobDetailComponent },
+  { path: 'inventory', component: InventoryListComponent },
+  { path: 'inventory/add', component: InventoryFormComponent },
+  { path: 'inventory/edit/:id', component: InventoryFormComponent },
+  { path: 'part-requests', component: PartRequestsComponent },
+  { path: 'invoice/:jobId', component: InvoiceComponent },
   { path: '', redirectTo: 'jobs', pathMatch: 'full' }
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [AppComponent, InventoryListComponent, InventoryFormComponent, PartRequestsComponent, InvoiceComponent],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     JobsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

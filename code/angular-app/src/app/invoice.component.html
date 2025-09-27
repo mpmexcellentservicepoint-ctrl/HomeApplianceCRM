@@ -1,0 +1,43 @@
+<h2>Invoice</h2>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="invoice">
+  <div>Invoice Date: {{ invoice.invoiceDate | date }}</div>
+  <div>Total: ₹{{ invoice.total | number:'1.2-2' }}</div>
+  <form (ngSubmit)="sendInvoice()" style="margin:1em 0;">
+    <label>Send via:
+      <select [(ngModel)]="sendMethod" name="sendMethod">
+        <option>Email</option>
+        <option>WhatsApp</option>
+      </select>
+    </label>
+    <label style="margin-left:1em;">Recipient:
+      <input [(ngModel)]="recipient" name="recipient" required placeholder="Email or WhatsApp #">
+    </label>
+    <label style="margin-left:1em;">Details:
+      <input [(ngModel)]="sendDetails" name="sendDetails" placeholder="Optional message">
+    </label>
+    <button type="submit" [disabled]="sending">Send</button>
+    <span *ngIf="sendStatus" style="margin-left:1em;">{{ sendStatus }}</span>
+  </form>
+  <h3>Send History</h3>
+  <table *ngIf="sendLogs.length" border="1" cellpadding="4" style="border-collapse:collapse;">
+    <tr>
+      <th>Date</th>
+      <th>Method</th>
+      <th>Recipient</th>
+      <th>Status</th>
+      <th>Details</th>
+      <th>By</th>
+    </tr>
+    <tr *ngFor="let log of sendLogs">
+      <td>{{ log.sentAt | date:'short' }}</td>
+      <td>{{ log.method }}</td>
+      <td>{{ log.recipient }}</td>
+      <td>{{ log.status }}</td>
+      <td>{{ log.details }}</td>
+      <td>{{ log.createdBy }}</td>
+    </tr>
+  </table>
+  <div *ngIf="!sendLogs.length">No send attempts yet.</div>
+</div>

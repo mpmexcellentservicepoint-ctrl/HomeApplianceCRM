@@ -1,0 +1,25 @@
+<h2>Part Requests</h2>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<table *ngIf="!loading && requests.length" class="requests-table">
+  <thead>
+    <tr>
+      <th>Part</th>
+      <th>Job</th>
+      <th>Quantity</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let req of requests">
+      <td>{{ req.part?.name }}</td>
+      <td>{{ req.job?.id }}</td>
+      <td>{{ req.quantity }}</td>
+      <td>{{ req.status }}</td>
+      <td>
+        <button *ngIf="req.status === 'Pending'" (click)="markArrived(req.id)">Mark Arrived</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
