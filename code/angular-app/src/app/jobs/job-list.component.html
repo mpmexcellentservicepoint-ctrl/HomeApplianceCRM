@@ -1,0 +1,25 @@
+<h2>Job List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Status</th>
+      <th>Customer</th>
+      <th>Product</th>
+      <th>Dealer</th>
+      <th>SLA Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let job of jobs">
+      <td>{{job.id}}</td>
+      <td>{{job.status}}</td>
+      <td>{{job.customer?.name}}</td>
+      <td>{{job.product?.name}}</td>
+      <td>{{job.dealer?.name}}</td>
+      <td>{{job.slaStatus}}</td>
+      <td><a [routerLink]="['/jobs', job.id]">View</a></td>
+    </tr>
+  </tbody>
+</table>

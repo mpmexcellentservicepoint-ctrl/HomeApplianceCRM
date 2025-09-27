@@ -1,0 +1,23 @@
+<h2>Job Detail</h2>
+<div *ngIf="job">
+  <p><b>ID:</b> {{job.id}}</p>
+  <p><b>Status:</b> {{job.status}}</p>
+  <p><b>Customer:</b> {{job.customer?.name}}</p>
+  <p><b>Product:</b> {{job.product?.name}}</p>
+  <p><b>Dealer:</b> {{job.dealer?.name}}</p>
+  <p><b>SLA Status:</b> {{job.slaStatus}}</p>
+  <p><b>SLA Deadline:</b> {{job.slaDeadline | date}}</p>
+  <p><b>Technician:</b> {{job.technician?.userName}}</p>
+  <hr>
+  <label>Status:
+    <select [(ngModel)]="job.status">
+      <option *ngFor="let s of statusOptions" [value]="s">{{s}}</option>
+    </select>
+    <button (click)="updateStatus(job.status)">Update Status</button>
+  </label>
+  <br>
+  <label>Assign Technician:
+    <input [(ngModel)]="technicianId" placeholder="Technician ID">
+    <button (click)="assignTechnician()">Assign</button>
+  </label>
+</div>
